@@ -1,0 +1,3 @@
+CREATE USER 'blog'@'localhost' IDENTIFIED BY 'password';
+CREATE DATABASE IF NOT EXISTS blog;
+GRANT ALL PRIVILEGES ON blog.* to 'blog'@'localhost' WITH GRANT OPTION;
