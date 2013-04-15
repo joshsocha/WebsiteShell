@@ -1,0 +1,4 @@
+CREATE USER 'blog'@'localhost' IDENTIFIED BY 'password';
+CREATE DATABASE IF NOT EXISTS blog;
+GRANT ALL PRIVILEGES ON blog.* to 'blog'@'localhost' WITH GRANT OPTION;
+CREATE TABLE IF NOT EXISTS blog.posts ( id int NOT NULL AUTO_INCREMENT PRIMARY KEY, title varchar(50), post text, date timestamp);

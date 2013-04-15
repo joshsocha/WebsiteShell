@@ -8,7 +8,7 @@ include './layout/footer.php';
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <?php
-printHeader('Blank Page');
+printHeader('AlduinDev');
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,15 +17,38 @@ printHeader('Blank Page');
 <?php
 printMyHeader('home');
 beginMiddle();
+if(isset($_GET['page'])){
+	include './'.$_GET['page'].'/content.php';
+}else{
+	include './home/content.php';
+}
 ?>
-
-<h2>Home Page</h2>
-<p>Put your content here<p>
-
 <?php
 endMiddle();
 printFooter();
 ?>
+<script type="text/javascript">
+$(function(){
 
+  // Bind the event.
+$(window).hashchange( function(){
+	// Every time has changes the page tires to load the correct
+	//content with ajax
+	$("a").removeClass("current");
+	var currHash = location.hash.substring(1);
+	if(currHash == ""){
+		$("#middle").html(ajax_load).load("/home/content.php");
+		$("#home").addClass("current");
+	}else{
+		$("#middle").html(ajax_load).load("/" + currHash + "/content.php");
+		$("#" + location.hash.substring(1) ).addClass("current");
+	}
+  })
+
+  // Trigger the event (useful on page load).
+  $(window).hashchange();
+
+});
+</script>
 </body>
 </html>

@@ -101,7 +101,7 @@ ul#nav
 	padding:0px;
 	bottom:0px
 }
-ul#nav a:link,a:visited,a:hover,a:active
+ul#nav a:link,a:visited
 {
 	text-decoration:none;
 	font-size:1.5em;
@@ -123,7 +123,7 @@ ul#nav li
 	padding-top:6px;
 	padding-bottom:3px;
 }
-ul#nav a#current
+ul#nav a.current
 {
 	background-color:#eceae0;
 }

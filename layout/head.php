@@ -5,8 +5,10 @@ function printHeader($title){
 		'<title>'.$title.'</title>'.
 		'<link href="/css/jquery-ui-1.10.2.custom.min.css" rel="stylesheet" />'.
 		'<link href="/css/alduin.css" rel="stylesheet" />'.
-		'<script src="/script/jquery-1.9.1.js" type="text/javascript"></script>'.
-		'<script src="/script/jquery-2.10.2.custom.js" type="text/javascript"></script>'.
+		'<script src="/scripts/jquery-1.9.1.js" type="text/javascript"></script>'.
+		'<script src="/scripts/jquery-2.10.2.custom.js" type="text/javascript"></script>'.
+		'<script src="/scripts/jquery-1.9.1.js" type="text/javascript"></script>'.
+		'<script src="/scripts/jquery.ba-hashchange.min.js" type="text/javascript"></script>'.
 	'</head>';
 
 }
