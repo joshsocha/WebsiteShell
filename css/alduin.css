@@ -127,3 +127,7 @@ ul#nav a.current
 {
 	background-color:#eceae0;
 }
+
+#blogControll{
+	float:right;
+}

@@ -1,36 +1,37 @@
 <h2>My Blog</h2>
+<div id="blogControll">
+<select id="num">
+	<option value="5">5</option>
+	<option value="10">10</option>
+	<option value="20">20</option>
+	<option value="30">30</option>
+</select>
+</div>
 <br/>
-<?php
-$mysqli = new MySQLi("localhost", "blog", "password", "blog");
-// Check Connection
-if(mysqli_connect_errno()){
-	printf("Connect failed: %s\n", mysqli_connect_error());
-	exit();
-}
+<div id="blogPosts">
+</div>
 
-//Prepare what page and how many posts to display
-$num = 10;
-$page = 0;
-if(isset($_GET['num'])){
-	$num = $_GET['num'];
+<script type="text/javascript">
+$.ajaxSetup ({
+	cache: false
+});
+var ajax_load = "";
+var page = 0;
+var num = 5;
+if(Number(getUrlVars()['page'])){
+	page = getUrlVars()['page'];
 }
-if(isset($_GET['page'])){
-	$page = $_GET['page'];
+if(Number(getUrlVars()['num'])){
+        num = getUrlVars()['num'];
 }
+$("#blogPosts").html(ajax_load).load("/blog/posts.php", "page=" + page + "&num=" + num);
+$("#page").change(function(){
+	page = $(this).val();
+	$("#blogPosts").html(ajax_load).load("/blog/posts.php", "page=" + page + "&num=" + num);
+});
+$("#num").change(function(){
+	num = $(this).val();
+	$("#blogPosts").html(ajax_load).load("/blog/posts.php", "page=" + page + "&num=" + num);
+});
 
-$skip = $num * $page;
-if($stmt = $mysqli->prepare("SELECT title,post,date FROM posts ORDER BY date DESC LIMIT ?, ?")){
-	$stmt->bind_param('ii', $skip, $num);
-	$stmt->bind_result($title,$post,$date);
-	$stmt->execute();
-	while($stmt->fetch()){
-		echo '<h3>'.$title.' - '.$date.'</h3><br/>';
-		echo '<p>'.$post.'</p><br/>';
-	}
-	//Free the result
-	$stmt->close();
-}
-$mysqli->close();
-
-
-?>
+</script>

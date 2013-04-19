@@ -17,11 +17,6 @@ printHeader('AlduinDev');
 <?php
 printMyHeader('home');
 beginMiddle();
-if(isset($_GET['page'])){
-	include './'.$_GET['page'].'/content.php';
-}else{
-	include './home/content.php';
-}
 ?>
 <?php
 endMiddle();
@@ -29,19 +24,22 @@ printFooter();
 ?>
 <script type="text/javascript">
 $(function(){
-
-  // Bind the event.
+// This script makes sure back and forward buttons work since I am using
+// hashes to move from page to page and ajax
 $(window).hashchange( function(){
 	// Every time has changes the page tires to load the correct
 	//content with ajax
 	$("a").removeClass("current");
 	var currHash = location.hash.substring(1);
+	if(currHash.indexOf("?") != -1){
+		currHash = currHash.substring(0, currHash.indexOf("?"));
+	}
 	if(currHash == ""){
 		$("#middle").html(ajax_load).load("/home/content.php");
 		$("#home").addClass("current");
 	}else{
 		$("#middle").html(ajax_load).load("/" + currHash + "/content.php");
-		$("#" + location.hash.substring(1) ).addClass("current");
+		$("#" + currHash ).addClass("current");
 	}
   })
 

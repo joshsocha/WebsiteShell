@@ -9,6 +9,7 @@ function printHeader($title){
 		'<script src="/scripts/jquery-2.10.2.custom.js" type="text/javascript"></script>'.
 		'<script src="/scripts/jquery-1.9.1.js" type="text/javascript"></script>'.
 		'<script src="/scripts/jquery.ba-hashchange.min.js" type="text/javascript"></script>'.
+		'<script src="/scripts/utility.js" type="text/javascript"></script>'.
 	'</head>';
 
 }

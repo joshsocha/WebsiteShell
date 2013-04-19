@@ -13,7 +13,8 @@ function printMyHeader($current){
 		'<div id="header">'.
 		'<span class="headerText" id="output">AlduinDev</span>'.
 		'</div>';
-
+	
+	// Navigation bar
 	echo '<ul id="nav">';
 	foreach($pages as $key => $value){
 		echo '<li><a ';
@@ -27,6 +28,8 @@ function printMyHeader($current){
 	}
 	echo '</ul></div>';
 	
+	// Ajax that loads the middle content of the page for each of the
+	// Different pages in the pages array
 	echo "\n".'<script type="text/javascript">'."\n";
 	echo  '$.ajaxSetup ({'."\n".
 	'cache: false'."\n".
@@ -40,6 +43,8 @@ function printMyHeader($current){
     		'});'."\n";
 	}
 
+	// This updates the naviagation so that the current class moves to the porper
+	// <a> tag.
 	echo '$("ul li a").click(function() {'."\n".
 	'var p = $(this).parents("ul");'."\n".
 	'$("a", p).removeClass("current");'."\n".
@@ -48,7 +53,5 @@ function printMyHeader($current){
 	'});'."\n";
 	
 	echo '</script>';
-
-	echo '<a>'.$_SERVER['SCRIPT_NAME'].'</a>';
 }
 ?>
